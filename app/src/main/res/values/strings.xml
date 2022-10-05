@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ProjectX</string>
+    <string name="signInBtn">Sign In</string>
+    <string name="signInTextView">Sign In</string>
+    <string name="signInEmailAddressField">user@email.no</string>
+    <string name="signInPasswordField">**********</string>
+    <string name="emailTag">Email</string>
+    <string name="passwordTag">Password</string>
+    <string name="forgotPassword">Forgot password?</string>
 </resources>
