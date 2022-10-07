@@ -1,26 +1,24 @@
 package com.myapps.projectx
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.myapps.projectx.databinding.ActivitySignInBinding
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class SignInActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignInBinding
-
+class App : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater)
         hideSystemsBars()
-        setContentView(binding.root)
+        setContentView(R.layout.activity_app)
 
-        binding.signInButton.setOnClickListener {
-            val homaActivity = Intent(it.context, App::class.java)
-            startActivity(homaActivity)
-        }
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val navController = findNavController(R.id.manuFragment)
+
+        bottomNavigationView.setupWithNavController(navController)
     }
 
     private fun hideSystemsBars(){

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.myapps.projectx.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.myapps.projectx.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/deadlineFragment"
+        android:name="com.myapps.projectx.DeadlineFragment"
+        android:label="fragment_deadline"
+        tools:layout="@layout/fragment_deadline" />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.myapps.projectx.InboxFragment"
+        android:label="fragment_inbox"
+        tools:layout="@layout/fragment_inbox" />
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.myapps.projectx.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" />
+</navigation>
