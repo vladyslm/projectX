@@ -7,4 +7,6 @@
     <string name="emailTag">Email</string>
     <string name="passwordTag">Password</string>
     <string name="forgotPassword">Forgot password?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
