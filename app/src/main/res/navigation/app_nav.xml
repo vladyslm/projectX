@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.myapps.projectx.ProfileFragment"
+        android:name="com.myapps.projectx.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.myapps.projectx.CalendarFragment"
+        android:name="com.myapps.projectx.fragments.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/deadlineFragment"
-        android:name="com.myapps.projectx.DeadlineFragment"
+        android:name="com.myapps.projectx.fragments.DeadlineFragment"
         android:label="fragment_deadline"
         tools:layout="@layout/fragment_deadline" />
     <fragment
         android:id="@+id/inboxFragment"
-        android:name="com.myapps.projectx.InboxFragment"
+        android:name="com.myapps.projectx.fragments.InboxFragment"
         android:label="fragment_inbox"
         tools:layout="@layout/fragment_inbox" />
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.myapps.projectx.EventsFragment"
+        android:name="com.myapps.projectx.fragments.EventsFragment"
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" />
 </navigation>
