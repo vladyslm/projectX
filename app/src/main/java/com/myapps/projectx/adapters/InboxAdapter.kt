@@ -1,10 +1,11 @@
-package com.myapps.projectx
+package com.myapps.projectx.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 
 class InboxAdapter: RecyclerView.Adapter<InboxAdapter.ViewHolder>() {

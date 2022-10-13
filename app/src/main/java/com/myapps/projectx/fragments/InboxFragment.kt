@@ -1,21 +1,17 @@
 package com.myapps.projectx.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.myapps.projectx.InboxAdapter
+import com.myapps.projectx.adapters.InboxAdapter
 import com.myapps.projectx.R
-import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
-import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
