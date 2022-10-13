@@ -44,7 +44,11 @@ class InboxAdapter : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
             Log.d("message layout", "${currentItem.message} from: ${currentItem.from}")
 
             val action =
-                InboxFragmentDirections.navigateToMessage(currentItem.message, currentItem.from)
+                InboxFragmentDirections.navigateToMessage(
+                    currentItem.message,
+                    currentItem.from,
+                    currentItem.date
+                )
             Navigation.findNavController(holder.itemView).navigate(action)
 
         }

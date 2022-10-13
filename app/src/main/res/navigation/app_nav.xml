@@ -45,5 +45,8 @@
         <argument
             android:name="from"
             app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
     </fragment>
 </navigation>

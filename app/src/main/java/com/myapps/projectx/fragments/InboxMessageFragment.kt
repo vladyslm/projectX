@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 //import com.myapps.projectx.InboxMessageFragmentArgs
 import com.myapps.projectx.R
@@ -41,7 +42,14 @@ class InboxMessageFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         Log.d("inbox:", "${args.from}:${args.message}")
-        return inflater.inflate(R.layout.fragment_inbox_message, container, false)
+        val view = inflater.inflate(R.layout.fragment_inbox_message, container, false)
+
+
+        view.findViewById<TextView>(R.id.inboxFromFull).text = args.from
+        view.findViewById<TextView>(R.id.inboxMessageFull).text = args.message
+        view.findViewById<TextView>(R.id.inboxDateFull).text = args.date
+
+        return view
     }
 
     companion object {
