@@ -24,10 +24,26 @@
         android:id="@+id/inboxFragment"
         android:name="com.myapps.projectx.fragments.InboxFragment"
         android:label="fragment_inbox"
-        tools:layout="@layout/fragment_inbox" />
+        tools:layout="@layout/fragment_inbox" >
+        <action
+            android:id="@+id/action_inboxFragment_to_inboxMessageFragment"
+            app:destination="@id/inboxMessageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.myapps.projectx.fragments.EventsFragment"
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/inboxMessageFragment"
+        android:name="com.myapps.projectx.InboxMessageFragment"
+        android:label="fragment_inbox_message"
+        tools:layout="@layout/fragment_inbox_message" >
+        <argument
+            android:name="message"
+            app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+    </fragment>
 </navigation>
