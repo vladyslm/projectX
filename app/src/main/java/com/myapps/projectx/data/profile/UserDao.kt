@@ -1,4 +1,4 @@
-package com.myapps.projectx.data
+package com.myapps.projectx.data.profile
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

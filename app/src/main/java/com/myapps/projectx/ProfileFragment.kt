@@ -1,7 +1,6 @@
 package com.myapps.projectx
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.myapps.projectx.data.User
-import com.myapps.projectx.data.UserViewModel
+import com.myapps.projectx.data.profile.User
+import com.myapps.projectx.data.profile.UserViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

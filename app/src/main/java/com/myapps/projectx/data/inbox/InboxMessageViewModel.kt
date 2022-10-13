@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.myapps.projectx.data.UserDatabase
+import com.myapps.projectx.data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -14,7 +14,7 @@ class InboxMessageViewModel(application: Application): AndroidViewModel(applicat
     private val repository: InboxMessageRepository
 
     init {
-        val inboxMessageDao = UserDatabase.getDatabase(application).inboxDao()
+        val inboxMessageDao = AppDatabase.getDatabase(application).inboxDao()
         repository = InboxMessageRepository(inboxMessageDao)
         readAllMessages = repository.readAll
     }

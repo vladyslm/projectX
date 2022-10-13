@@ -1,4 +1,4 @@
-package com.myapps.projectx.data
+package com.myapps.projectx.data.profile
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
