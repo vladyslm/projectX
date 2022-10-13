@@ -3,37 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/inboxMessageFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="TextView"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/inboxMessage"
-        android:layout_width="330dp"
-        android:layout_height="137dp"
-        android:layout_marginEnd="80dp"
-        android:background="@drawable/inbox_message"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inboxMessageFrom" />
+        <TextView
+            android:id="@+id/inboxMessageFrom"
+            android:layout_gravity="start"
+            android:layout_marginStart="41dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="13sp"
+            android:textColor="@color/gray"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/inboxMessageDate"
-        android:layout_width="92dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="84dp"
-        android:text="TextView"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inboxMessage" />
+        <TextView
+            android:id="@+id/inboxMessage"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/inbox_message"
+            android:padding="10dp"
+            android:text="TextView"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/inboxMessageDate"
+            android:layout_gravity="end"
+            android:layout_marginEnd="41dp"
+            android:layout_width="92dp"
+            android:layout_height="24dp"
+            android:text="TextView"
+            android:textSize="13sp"
+            android:textColor="@color/gray"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

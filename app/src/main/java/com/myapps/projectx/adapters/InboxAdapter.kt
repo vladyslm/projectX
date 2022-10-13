@@ -22,7 +22,13 @@ class InboxAdapter: RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = inboxList[position]
-        holder.itemView.findViewById<TextView>(R.id.inboxMessage).text = currentItem.message
+        var msg = currentItem.message
+        if (msg.length > 270){
+            msg = msg.substring(0, 270).plus("...")
+        }
+
+        holder.itemView.findViewById<TextView>(R.id.inboxMessage).text = msg
+
         holder.itemView.findViewById<TextView>(R.id.inboxMessageFrom).text = currentItem.from
         holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = currentItem.date
     }

@@ -3,27 +3,27 @@
 <vector
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="330dp"
-    android:height="105dp"
-    android:viewportWidth="330"
-    android:viewportHeight="105"
+    android:width="334dp"
+    android:height="133dp"
+    android:viewportWidth="334"
+    android:viewportHeight="133"
     >
 
     <group>
 
         <clip-path
-            android:pathData="M0 0H330V105H0V0Z"
+            android:pathData="M15 0H319C327.284 0 334 6.71573 334 15V118C334 126.284 327.284 133 319 133H15C6.71573 133 0 126.284 0 118V15C0 6.71573 6.71573 0 15 0Z"
             />
 
         <path
-            android:pathData="M0 0V105H330V0"
-            android:fillColor="#3F3E4E"
+            android:pathData="M0 0V133H334V0"
+            android:fillColor="@color/trout"
             />
 
         <path
-            android:pathData="M0 0H330V105H0V0Z"
+            android:pathData="M15 0H319C327.284 0 334 6.71573 334 15V118C334 126.284 327.284 133 319 133H15C6.71573 133 0 126.284 0 118V15C0 6.71573 6.71573 0 15 0Z"
             android:strokeWidth="4"
-            android:strokeColor="@color/trout"
+            android:strokeColor="@color/gray"
             />
 
     </group>
