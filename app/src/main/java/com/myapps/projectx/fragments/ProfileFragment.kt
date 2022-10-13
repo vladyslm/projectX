@@ -1,4 +1,4 @@
-package com.myapps.projectx
+package com.myapps.projectx.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.myapps.projectx.R
 import com.myapps.projectx.data.profile.User
 import com.myapps.projectx.data.profile.UserViewModel
 

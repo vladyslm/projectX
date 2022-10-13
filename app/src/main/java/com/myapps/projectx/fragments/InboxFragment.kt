@@ -1,4 +1,4 @@
-package com.myapps.projectx
+package com.myapps.projectx.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.myapps.projectx.InboxAdapter
+import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import kotlin.math.log
