@@ -1,4 +1,4 @@
-package com.myapps.projectx
+package com.myapps.projectx.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+//import com.myapps.projectx.InboxMessageFragmentArgs
+import com.myapps.projectx.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

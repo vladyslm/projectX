@@ -13,23 +13,25 @@ import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.fragments.InboxFragmentDirections
 
-class InboxAdapter: RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxAdapter : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
-//    private lateinit var inboxMessageLayout: ConstraintLayout
+    //    private lateinit var inboxMessageLayout: ConstraintLayout
     private var inboxList = emptyList<InboxMessage>()
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.inbox_message, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.inbox_message, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = inboxList[position]
         var msg = currentItem.message
-        if (msg.length > 270){
+        if (msg.length > 270) {
             msg = msg.substring(0, 270).plus("...")
         }
 
@@ -41,7 +43,8 @@ class InboxAdapter: RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
         holder.itemView.findViewById<ConstraintLayout>(R.id.inboxMessageLayout).setOnClickListener {
             Log.d("message layout", "${currentItem.message} from: ${currentItem.from}")
 
-            val action = InboxFragmentDirections.actionInboxFragmentToInboxMessageFragment(currentItem.message, currentItem.from)
+            val action =
+                InboxFragmentDirections.navigateToMessage(currentItem.message, currentItem.from)
             Navigation.findNavController(holder.itemView).navigate(action)
 
         }
@@ -53,7 +56,7 @@ class InboxAdapter: RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(inbox: List<InboxMessage>){
+    fun setData(inbox: List<InboxMessage>) {
         this.inboxList = inbox
         notifyDataSetChanged()
     }

@@ -26,7 +26,7 @@
         android:label="fragment_inbox"
         tools:layout="@layout/fragment_inbox" >
         <action
-            android:id="@+id/action_inboxFragment_to_inboxMessageFragment"
+            android:id="@+id/navigateToMessage"
             app:destination="@id/inboxMessageFragment" />
     </fragment>
     <fragment
@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_events" />
     <fragment
         android:id="@+id/inboxMessageFragment"
-        android:name="com.myapps.projectx.InboxMessageFragment"
+        android:name="com.myapps.projectx.fragments.InboxMessageFragment"
         android:label="fragment_inbox_message"
         tools:layout="@layout/fragment_inbox_message" >
         <argument
