@@ -9,4 +9,8 @@ class InboxMessageRepository(private val inboxMessageDao: InboxMessageDao) {
     suspend fun addInboxMessage(inboxMessage: InboxMessage){
         inboxMessageDao.addMessage(inboxMessage)
     }
+
+    suspend fun markAsRead(messageId: Int){
+        inboxMessageDao.markAsRead(messageId)
+    }
 }

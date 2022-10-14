@@ -25,4 +25,10 @@ class InboxMessageViewModel(application: Application): AndroidViewModel(applicat
         }
     }
 
+    fun markAsRead(messageId:Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.markAsRead(messageId)
+        }
+    }
+
 }

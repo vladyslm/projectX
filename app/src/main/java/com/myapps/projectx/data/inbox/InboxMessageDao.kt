@@ -13,5 +13,8 @@ interface InboxMessageDao {
     suspend fun addMessage(message: InboxMessage)
 
     @Query("SELECT * FROM inbox_table ORDER BY id DESC")
-    fun readAllMessages() : LiveData<List<InboxMessage>>
+    fun readAllMessages(): LiveData<List<InboxMessage>>
+
+    @Query("UPDATE inbox_table SET isRead = 1 WHERE id = :messageId")
+    fun markAsRead(messageId: Int)
 }
