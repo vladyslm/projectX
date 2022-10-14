@@ -51,13 +51,14 @@ class InboxFragment : Fragment() {
 //        val messages = resources.getStringArray(R.array.messages).toList()
 //        val from = resources.getStringArray(R.array.from_inbox).toList()
 
-        val adapter = InboxAdapter()
+
+        inboxViewModel = ViewModelProvider(this).get(InboxMessageViewModel::class.java)
+        val adapter = InboxAdapter(inboxViewModel)
 
         recyclerView = view.findViewById(R.id.inboxRecyclerView)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        inboxViewModel = ViewModelProvider(this).get(InboxMessageViewModel::class.java)
 
         inboxViewModel.readAllMessages.observe(viewLifecycleOwner, Observer { message ->
             adapter.setData(message)

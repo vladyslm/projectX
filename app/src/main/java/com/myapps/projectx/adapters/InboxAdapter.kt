@@ -5,26 +5,33 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
+import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import com.myapps.projectx.fragments.InboxFragmentDirections
 
-class InboxAdapter : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxAdapter(inboxViewModel: InboxMessageViewModel) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
     //    private lateinit var inboxMessageLayout: ConstraintLayout
+    private var inboxViewModel: InboxMessageViewModel = inboxViewModel
     private var inboxList = emptyList<InboxMessage>()
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.inbox_message, parent, false)
+
         )
     }
 
@@ -39,9 +46,11 @@ class InboxAdapter : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
         holder.itemView.findViewById<TextView>(R.id.inboxMessageFrom).text = currentItem.from
         holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = currentItem.date
+        if (currentItem.isRead){
+            holder.itemView.findViewById<ImageView>(R.id.inboxIsReadIndicator).visibility = View.GONE
+        }
 
         holder.itemView.findViewById<ConstraintLayout>(R.id.inboxMessageLayout).setOnClickListener {
-            Log.d("message layout", "${currentItem.message} from: ${currentItem.from}")
 
             val action =
                 InboxFragmentDirections.navigateToMessage(
@@ -49,6 +58,9 @@ class InboxAdapter : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
                     currentItem.from,
                     currentItem.date
                 )
+
+            inboxViewModel.markAsRead(currentItem.id)
+
             Navigation.findNavController(holder.itemView).navigate(action)
 
         }

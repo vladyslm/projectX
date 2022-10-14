@@ -4,44 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inboxMessageLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:background="@drawable/inbox_message">
 
         <TextView
             android:id="@+id/inboxMessageFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginStart="41dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:text="TextView"
             android:textColor="@color/gray"
-            android:textSize="13sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/inboxMessage"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/inbox_message"
             android:padding="10dp"
             android:text="TextView"
             android:textColor="@color/white" />
 
+        <ImageView
+            android:id="@+id/inboxIsReadIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="7dp"
+            app:srcCompat="@drawable/is_read_indicator" />
+
         <TextView
             android:id="@+id/inboxMessageDate"
-            android:layout_width="92dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="41dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
             android:text="TextView"
             android:textColor="@color/gray"
             android:textSize="13sp"
             android:textStyle="bold" />
-
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
