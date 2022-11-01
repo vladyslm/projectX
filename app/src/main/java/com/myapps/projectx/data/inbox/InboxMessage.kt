@@ -9,8 +9,6 @@ data class InboxMessage(
     val id: Int,
     val message: String,
     val from: String,
-
-    // TODO: change to the timestamp
-    val date: String,
+    val date: Long,
     val isRead: Boolean
 )

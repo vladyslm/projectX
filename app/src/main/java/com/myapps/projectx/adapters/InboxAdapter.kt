@@ -15,6 +15,7 @@ import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import com.myapps.projectx.fragments.InboxFragmentDirections
+import java.sql.Timestamp
 
 class InboxAdapter(inboxViewModel: InboxMessageViewModel) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
@@ -42,21 +43,24 @@ class InboxAdapter(inboxViewModel: InboxMessageViewModel) : RecyclerView.Adapter
             msg = msg.substring(0, 270).plus("...")
         }
 
+        val timestamp = Timestamp(currentItem.date)
+
         holder.itemView.findViewById<TextView>(R.id.inboxMessage).text = msg
 
         holder.itemView.findViewById<TextView>(R.id.inboxMessageFrom).text = currentItem.from
-        holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = currentItem.date
+        holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = timestamp.toString()
         if (currentItem.isRead){
             holder.itemView.findViewById<ImageView>(R.id.inboxIsReadIndicator).visibility = View.GONE
         }
 
         holder.itemView.findViewById<ConstraintLayout>(R.id.inboxMessageLayout).setOnClickListener {
 
-            val action =
+
+        val action =
                 InboxFragmentDirections.navigateToMessage(
                     currentItem.message,
                     currentItem.from,
-                    currentItem.date
+                    timestamp.toString()
                 )
 
             inboxViewModel.markAsRead(currentItem.id)

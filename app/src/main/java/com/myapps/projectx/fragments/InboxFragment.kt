@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapps.projectx.adapters.InboxAdapter
+import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import com.myapps.projectx.databinding.FragmentInboxBinding
 
@@ -39,6 +40,18 @@ class InboxFragment : Fragment() {
         binding.inboxRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         inboxViewModel.readAllMessages.observe(viewLifecycleOwner, Observer { message ->
+            if (message.isEmpty()) {
+                inboxViewModel.addInboxMessage(
+                    InboxMessage(
+                        0,
+                        "message 1",
+                        "user123",
+                        1667331264516,
+                        false
+                    )
+                )
+            }
+
             adapter.setData(message)
         })
     }
