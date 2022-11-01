@@ -15,9 +15,13 @@ import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import com.myapps.projectx.fragments.InboxFragmentDirections
+import java.sql.Date
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.util.*
 
-class InboxAdapter(inboxViewModel: InboxMessageViewModel) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxAdapter(inboxViewModel: InboxMessageViewModel) :
+    RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
     //    private lateinit var inboxMessageLayout: ConstraintLayout
     private var inboxViewModel: InboxMessageViewModel = inboxViewModel
@@ -44,24 +48,25 @@ class InboxAdapter(inboxViewModel: InboxMessageViewModel) : RecyclerView.Adapter
         }
 
         val timestamp = Timestamp(currentItem.date)
+        val messageDate = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH).format(timestamp)
 
         holder.itemView.findViewById<TextView>(R.id.inboxMessage).text = msg
 
         holder.itemView.findViewById<TextView>(R.id.inboxMessageFrom).text = currentItem.from
-        holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = timestamp.toString()
-        if (currentItem.isRead){
-            holder.itemView.findViewById<ImageView>(R.id.inboxIsReadIndicator).visibility = View.GONE
+        holder.itemView.findViewById<TextView>(R.id.inboxMessageDate).text = messageDate
+        if (currentItem.isRead) {
+            holder.itemView.findViewById<ImageView>(R.id.inboxIsReadIndicator).visibility =
+                View.GONE
         }
 
         holder.itemView.findViewById<ConstraintLayout>(R.id.inboxMessageLayout).setOnClickListener {
 
 
-        val action =
-                InboxFragmentDirections.navigateToMessage(
-                    currentItem.message,
-                    currentItem.from,
-                    timestamp.toString()
-                )
+            val action = InboxFragmentDirections.navigateToMessage(
+                currentItem.message,
+                currentItem.from,
+                messageDate
+            )
 
             inboxViewModel.markAsRead(currentItem.id)
 
