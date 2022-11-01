@@ -12,7 +12,7 @@ interface InboxMessageDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addMessage(message: InboxMessage)
 
-    @Query("SELECT * FROM inbox_table ORDER BY id DESC")
+    @Query("SELECT * FROM inbox_table ORDER BY date DESC")
     fun readAllMessages(): LiveData<List<InboxMessage>>
 
     @Query("UPDATE inbox_table SET isRead = 1 WHERE id = :messageId")
