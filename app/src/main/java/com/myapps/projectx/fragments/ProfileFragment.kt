@@ -39,10 +39,6 @@ class ProfileFragment : Fragment() {
                 val fullName = "$fName $lName"
                 binding!!.userName.text = fullName
                 binding!!.userEmail.text = user[0].email
-
-            } else {
-                userViewModel.addUser(User(0, "user1", "user1", "user1@hiof.no"))
-                Toast.makeText(requireContext(), "Empty DB", Toast.LENGTH_SHORT).show()
             }
         })
 

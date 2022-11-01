@@ -40,18 +40,6 @@ class InboxFragment : Fragment() {
         binding.inboxRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         inboxViewModel.readAllMessages.observe(viewLifecycleOwner, Observer { message ->
-            if (message.isEmpty()) {
-                inboxViewModel.addInboxMessage(
-                    InboxMessage(
-                        0,
-                        "message 1",
-                        "user123",
-                        1667331264516,
-                        false
-                    )
-                )
-            }
-
             adapter.setData(message)
         })
     }

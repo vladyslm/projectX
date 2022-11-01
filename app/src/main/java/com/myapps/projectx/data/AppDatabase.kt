@@ -30,6 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "user_database"
                 )
+                    .createFromAsset("database/user_database")
                     .addMigrations()
                     .build()
                 INSTANCE = instance
