@@ -18,7 +18,7 @@ class CalendarAdapter(private var daysOfMonth: ArrayList<String>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.calendar_cell, parent, false)
         val layoutParams = view.layoutParams
-        layoutParams.height = (parent.height * 0.065).toInt()
+        layoutParams.height = (parent.height * 0.2).toInt()
         return ViewHolder(view)
     }
 

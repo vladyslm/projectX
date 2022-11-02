@@ -10,6 +10,7 @@
 
     <!-- Calendar -->
     <string name="dayMonthPlaceholder">DayMonthPlaceholder</string>
+    <string name="defaultCalendarCellValue">1</string>
     <string name="daySunday">SUN</string>
     <string name="dayMonday">MON</string>
     <string name="dayTuesday">TUE</string>
