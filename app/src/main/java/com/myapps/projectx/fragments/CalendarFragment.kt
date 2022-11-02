@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.adapters.CalendarAdapter
+import com.myapps.projectx.customLayouts.CustomNonScrollableGridLayout
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -47,7 +47,7 @@ class CalendarFragment : Fragment() {
         val daysInMonth = daysInMonthArray(selectedDate)
 
         val calendarAdapter = CalendarAdapter(daysInMonth)
-        val layoutManager = GridLayoutManager(requireContext(), 7)
+        val layoutManager = CustomNonScrollableGridLayout(requireContext(), 7)
 
         calendarRecyclerView.layoutManager = layoutManager
         calendarRecyclerView.adapter = calendarAdapter
