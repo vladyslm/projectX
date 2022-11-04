@@ -118,6 +118,11 @@
             android:layout_height="259dp"
             android:overScrollMode="never"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarEventsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </FrameLayout>

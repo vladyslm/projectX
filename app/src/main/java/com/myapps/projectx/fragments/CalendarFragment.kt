@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.adapters.CalendarAdapter
+import com.myapps.projectx.adapters.CalendarEventAdapter
 import com.myapps.projectx.customLayouts.CustomNonScrollableGridLayout
 import java.time.LocalDate
 import java.time.YearMonth
@@ -20,6 +22,11 @@ class CalendarFragment : Fragment() {
     private lateinit var calendarRecyclerView: RecyclerView
     private lateinit var selectedDate: LocalDate
 
+    private lateinit var calendarEventAdapter: CalendarEventAdapter
+    private lateinit var calendarEventRecyclerView: RecyclerView
+
+    private var days: ArrayList<String> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectedDate = LocalDate.now()
@@ -29,6 +36,14 @@ class CalendarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // TODO: remove dummy data
+        days.add("4")
+        days.add("5")
+        days.add("6")
+        days.add("7")
+        days.add("8")
+        days.add("9")
+        days.add("10")
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
@@ -36,6 +51,11 @@ class CalendarFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initWidgets()
         setMonthView()
+
+        calendarEventAdapter = CalendarEventAdapter(days)
+        calendarEventRecyclerView = view.findViewById(R.id.calendarEventsRecyclerView)
+        calendarEventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        calendarEventRecyclerView.adapter = calendarEventAdapter
     }
 
     private fun initWidgets() {
