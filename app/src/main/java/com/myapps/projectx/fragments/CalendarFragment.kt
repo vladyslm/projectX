@@ -1,11 +1,12 @@
 package com.myapps.projectx.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Process
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.adapters.CalendarAdapter
@@ -46,7 +47,7 @@ class CalendarFragment : Fragment() {
         monthYearText.text = monthYearFromDate(selectedDate)
         val daysInMonth = daysInMonthArray(selectedDate)
 
-        val calendarAdapter = CalendarAdapter(daysInMonth)
+        val calendarAdapter = CalendarAdapter(daysInMonth, selectedDate.dayOfMonth.toString())
         val layoutManager = CustomNonScrollableGridLayout(requireContext(), 7)
 
         calendarRecyclerView.layoutManager = layoutManager
