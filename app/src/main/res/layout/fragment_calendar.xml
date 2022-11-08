@@ -28,9 +28,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/gray"
                 android:text="@string/dayMonthPlaceholder"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/gray" />
 
             <Button
                 android:id="@+id/calendarNextMonth"
@@ -114,14 +114,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarRecyclerView"
             android:layout_width="match_parent"
-            android:background="@color/gun_powder"
             android:layout_height="259dp"
-            android:overScrollMode="never"/>
+            android:background="@color/gun_powder"
+            android:overScrollMode="never" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarEventsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
