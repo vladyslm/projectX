@@ -1,9 +1,11 @@
 package com.myapps.projectx.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
@@ -51,7 +53,14 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         initWidgets()
         setMonthView()
 
-        calendarEventAdapter = CalendarEventAdapter(days)
+
+        view.findViewById<Button>(R.id.calendarPreviousMonth)
+            .setOnClickListener { previousMonthAction(view) }
+
+        view.findViewById<Button>(R.id.calendarNextMonth)
+            .setOnClickListener { nextMonthAction(view) }
+
+        calendarEventAdapter = CalendarEventAdapter(days, selectedDate.dayOfMonth.toString())
         calendarEventRecyclerView = view.findViewById(R.id.calendarEventsRecyclerView)
         calendarEventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         calendarEventRecyclerView.adapter = calendarEventAdapter
@@ -107,11 +116,23 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onItemClick(position: Int, value: String) {
         if (value != "") {
             val adapter = calendarRecyclerView.adapter as CalendarAdapter
             adapter.updateCurrDate(value)
             updateScrollPosition(value.toInt() - 1)
         }
+    }
+
+
+    private fun previousMonthAction(view: View) {
+        selectedDate = selectedDate.minusMonths(1)
+        setMonthView()
+    }
+
+    private fun nextMonthAction(view: View) {
+        selectedDate = selectedDate.plusMonths(1)
+        setMonthView()
     }
 }
