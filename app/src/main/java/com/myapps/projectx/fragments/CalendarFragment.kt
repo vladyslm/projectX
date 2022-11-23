@@ -10,6 +10,7 @@ import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.adapters.CalendarAdapter
@@ -50,14 +51,19 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     ): View {
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
 
-
         calendarEventViewModel = ViewModelProvider(this).get(CalendarEventViewModel::class.java)
 
         val yearMonth = YearMonth.from(selectedDate)
         val daysInMonth = yearMonth.lengthOfMonth()
 
+
         for (i in 1..daysInMonth) {
             days.add(i.toString())
+        }
+
+        binding!!.addNewEvent.setOnClickListener {
+            val action = CalendarFragmentDirections.actionAddNewEvent()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
         }
 
         return _binding!!.root

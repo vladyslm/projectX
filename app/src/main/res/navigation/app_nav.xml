@@ -14,7 +14,11 @@
         android:id="@+id/calendarFragment"
         android:name="com.myapps.projectx.fragments.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_add_new_event"
+            app:destination="@id/addNewCalendarEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/deadlineFragment"
         android:name="com.myapps.projectx.fragments.DeadlineFragment"
@@ -49,4 +53,9 @@
             android:name="date"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/addNewCalendarEventFragment"
+        android:name="com.myapps.projectx.AddNewCalendarEventFragment"
+        android:label="fragment_add_new_calendar_event"
+        tools:layout="@layout/fragment_add_new_calendar_event" />
 </navigation>
