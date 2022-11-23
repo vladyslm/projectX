@@ -8,18 +8,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.myapps.projectx.R
 import com.myapps.projectx.adapters.CalendarAdapter
 import com.myapps.projectx.adapters.CalendarEventAdapter
 import com.myapps.projectx.customLayouts.CustomNonScrollableGridLayout
+import com.myapps.projectx.data.calendar_events.CalendarEventViewModel
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import com.myapps.projectx.databinding.FragmentCalendarBinding
 
 class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
+    private var TAG = "CalendarFragment"
+
     private var _binding: FragmentCalendarBinding? = null
     private val binding get() = _binding
 
@@ -31,6 +35,8 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     private lateinit var calendarEventRecyclerView: RecyclerView
 
     private var days: ArrayList<String> = ArrayList()
+
+    private lateinit var calendarEventViewModel: CalendarEventViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +51,8 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
 
 
+        calendarEventViewModel = ViewModelProvider(this).get(CalendarEventViewModel::class.java)
+
         val yearMonth = YearMonth.from(selectedDate)
         val daysInMonth = yearMonth.lengthOfMonth()
 
@@ -55,6 +63,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         return _binding!!.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initWidgets()
@@ -64,6 +73,10 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         binding!!.calendarNextMonth.setOnClickListener { nextMonthAction(view) }
 
         updateScrollPosition(selectedDate.dayOfMonth)
+
+        calendarEventViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
+            calendarEventAdapter.setEvents(events)
+        })
     }
 
     private fun initWidgets() {
@@ -83,7 +96,12 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         calendarRecyclerView.layoutManager = layoutManager
         calendarRecyclerView.adapter = calendarAdapter
 
-        calendarEventAdapter = CalendarEventAdapter(days, selectedDate.dayOfMonth.toString())
+        calendarEventAdapter = CalendarEventAdapter(
+            calendarEventViewModel,
+            days,
+            selectedDate.dayOfMonth.toString(),
+            selectedDate
+        )
         calendarEventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         calendarEventRecyclerView.adapter = calendarEventAdapter
     }

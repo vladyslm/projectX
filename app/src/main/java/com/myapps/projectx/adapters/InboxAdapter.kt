@@ -1,21 +1,18 @@
 package com.myapps.projectx.adapters
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.data.inbox.InboxMessage
 import com.myapps.projectx.data.inbox.InboxMessageViewModel
 import com.myapps.projectx.fragments.InboxFragmentDirections
-import java.sql.Date
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,7 +20,6 @@ import java.util.*
 class InboxAdapter(inboxViewModel: InboxMessageViewModel) :
     RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
-    //    private lateinit var inboxMessageLayout: ConstraintLayout
     private var inboxViewModel: InboxMessageViewModel = inboxViewModel
     private var inboxList = emptyList<InboxMessage>()
 
@@ -48,7 +44,8 @@ class InboxAdapter(inboxViewModel: InboxMessageViewModel) :
         }
 
         val timestamp = Timestamp(currentItem.date)
-        val messageDate = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH).format(timestamp)
+        val messageDate =
+            SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH).format(timestamp)
 
         holder.itemView.findViewById<TextView>(R.id.inboxMessage).text = msg
 
