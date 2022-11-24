@@ -15,7 +15,7 @@
         android:padding="10dp"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:text="TextView"/>
+        android:text="@string/emptyString"/>
 
     <TextView
         android:id="@+id/eventCalendarCellDate"
@@ -25,7 +25,7 @@
         android:textSize="11sp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="7dp"
-        android:text="TextView" />
+        android:text="@string/emptyString" />
 
 
 </LinearLayout>
