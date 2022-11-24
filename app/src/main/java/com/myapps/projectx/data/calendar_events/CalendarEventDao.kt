@@ -18,7 +18,7 @@ interface CalendarEventDao {
     @Query("SELECT * FROM calendar_events")
     fun readAll(): LiveData<List<CalendarEvent>>
 
-    @Query("SELECT * FROM calendar_events WHERE :from <= date <= :to")
+    @Query("SELECT * FROM calendar_events WHERE date >= :from AND date<= :to")
     fun readEventsInRange(from: Long, to: Long): LiveData<List<CalendarEvent>>
 
 }

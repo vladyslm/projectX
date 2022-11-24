@@ -22,7 +22,7 @@ class CalendarEventAdapter(
     private var calendarEventViewModel: CalendarEventViewModel,
     private var daysOfMonth: ArrayList<String>,
     private var currentDay: String,
-    private var chosenMonthYear: LocalDate
+    chosenMonthYear: LocalDate
 
 ) : RecyclerView.Adapter<CalendarEventAdapter.ViewHolder>() {
 
@@ -79,6 +79,7 @@ class CalendarEventAdapter(
         allEvents = events
 
         val eventMap = mutableMapOf<Int, ArrayList<CalendarEvent>>()
+
         events.forEach {
             val localDate = DateConverter.timestampToLocalDate(it.date)
             if (eventMap[localDate.dayOfMonth] != null) {

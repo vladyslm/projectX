@@ -32,7 +32,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     private lateinit var calendarRecyclerView: RecyclerView
     private lateinit var selectedDate: LocalDate
 
-    private lateinit var calendarEventAdapter: CalendarEventAdapter
     private lateinit var calendarEventRecyclerView: RecyclerView
 
     private var days: ArrayList<String> = ArrayList()
@@ -53,14 +52,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
         calendarEventViewModel = ViewModelProvider(this).get(CalendarEventViewModel::class.java)
 
-        val yearMonth = YearMonth.from(selectedDate)
-        val daysInMonth = yearMonth.lengthOfMonth()
-
-
-        for (i in 1..daysInMonth) {
-            days.add(i.toString())
-        }
-
         binding!!.addNewEvent.setOnClickListener {
             val action = CalendarFragmentDirections.actionAddNewEvent()
             view?.let { it1 -> Navigation.findNavController(it1).navigate(action) }
@@ -72,6 +63,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initWidgets()
         setMonthView()
 
@@ -79,10 +71,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         binding!!.calendarNextMonth.setOnClickListener { nextMonthAction(view) }
 
         updateScrollPosition(selectedDate.dayOfMonth)
-
-        calendarEventViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
-            calendarEventAdapter.setEvents(events)
-        })
     }
 
     private fun initWidgets() {
@@ -96,13 +84,22 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         monthYearText.text = monthYearFromDate(selectedDate)
         val daysInMonth = daysInMonthArray(selectedDate)
 
+
+        val yearMonth = YearMonth.from(selectedDate)
+        val numOfDaysInMonth = yearMonth.lengthOfMonth()
+
+        days = ArrayList()
+        for (i in 1..numOfDaysInMonth) {
+            days.add(i.toString())
+        }
+
         val calendarAdapter = CalendarAdapter(daysInMonth, selectedDate.dayOfMonth.toString(), this)
         val layoutManager = CustomNonScrollableGridLayout(requireContext(), 7)
 
         calendarRecyclerView.layoutManager = layoutManager
         calendarRecyclerView.adapter = calendarAdapter
 
-        calendarEventAdapter = CalendarEventAdapter(
+        val calendarEventAdapter = CalendarEventAdapter(
             calendarEventViewModel,
             days,
             selectedDate.dayOfMonth.toString(),
@@ -110,6 +107,10 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         )
         calendarEventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         calendarEventRecyclerView.adapter = calendarEventAdapter
+
+        calendarEventViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
+            calendarEventAdapter.setEvents(events)
+        })
     }
 
     private fun daysInMonthArray(date: LocalDate): ArrayList<String> {
