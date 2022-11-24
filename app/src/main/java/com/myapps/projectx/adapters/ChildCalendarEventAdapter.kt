@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.myapps.projectx.R
 import com.myapps.projectx.data.calendar_events.CalendarEvent
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ChildCalendarEventAdapter(private var events: List<CalendarEvent>) :
     RecyclerView.Adapter<ChildCalendarEventAdapter.ViewHolder>() {
@@ -19,7 +22,14 @@ class ChildCalendarEventAdapter(private var events: List<CalendarEvent>) :
 
         fun bind(event: CalendarEvent) {
             itemView.findViewById<TextView>(R.id.eventCalendarCellText).text = event.eventText
-            itemView.findViewById<TextView>(R.id.eventCalendarCellDate).text = event.date.toString()
+            if (event.from != 0L) {
+                var time = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(event.from)
+                if (event.to != 0L){
+                    val to = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(event.to)
+                    time += " - $to"
+                }
+                itemView.findViewById<TextView>(R.id.eventCalendarCellDate).text = time
+            }
         }
 
     }
