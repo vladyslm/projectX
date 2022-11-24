@@ -57,5 +57,28 @@
         android:id="@+id/addNewCalendarEventFragment"
         android:name="com.myapps.projectx.AddNewCalendarEventFragment"
         android:label="fragment_add_new_calendar_event"
-        tools:layout="@layout/fragment_add_new_calendar_event" />
+        tools:layout="@layout/fragment_add_new_calendar_event" >
+        <action
+            android:id="@+id/action_go_to_second_part"
+            app:destination="@id/addNewCalendarEventPart2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewCalendarEventPart2Fragment"
+        android:name="com.myapps.projectx.AddNewCalendarEventPart2Fragment"
+        android:label="fragment_add_new_calendar_event_part2"
+        tools:layout="@layout/fragment_add_new_calendar_event_part2"
+        >
+        <argument
+            android:name="day"
+            app:argType="string" />
+        <argument
+            android:name="month"
+            app:argType="string" />
+        <argument
+            android:name="year"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_go_back_to_calendar"
+            app:destination="@id/calendarFragment" />
+    </fragment>
 </navigation>
