@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -36,7 +37,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
     private var days: ArrayList<String> = ArrayList()
 
-    private lateinit var calendarEventViewModel: CalendarEventViewModel
+    private val calendarEventViewModel: CalendarEventViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +50,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
-
-        calendarEventViewModel = ViewModelProvider(this).get(CalendarEventViewModel::class.java)
 
         binding!!.addNewEvent.setOnClickListener {
             val action = CalendarFragmentDirections.actionAddNewEvent()
