@@ -15,12 +15,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <Button
                 android:id="@+id/calendarPreviousMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:background="@drawable/left_arrow"
                 android:text="-" />
 
             <TextView
@@ -34,8 +36,9 @@
 
             <Button
                 android:id="@+id/calendarNextMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:background="@drawable/right_arrow"
                 android:text="-" />
 
         </LinearLayout>
