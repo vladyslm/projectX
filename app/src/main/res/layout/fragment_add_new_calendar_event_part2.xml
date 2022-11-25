@@ -29,47 +29,96 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:hint="Text"
+        android:hint="Event"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDate" />
 
     <EditText
-        android:id="@+id/eventTimeFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:id="@+id/eventTimeTo"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
+        android:hint="17:45"
         android:inputType="time"
-        android:hint="From"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventText" />
 
     <EditText
-        android:id="@+id/eventTimeTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:id="@+id/eventTimeFrom"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="15:30"
         android:inputType="time"
-        android:hint="To"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintEnd_toStartOf="@+id/eventTimeTo"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventTimeFrom" />
+        app:layout_constraintTop_toBottomOf="@+id/eventText" />
 
     <Button
         android:id="@+id/button"
+        android:layout_width="263dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/signin_button"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_color_spinner" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Button"
+        android:text="From:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/eventTimeFrom"
+        app:layout_constraintStart_toStartOf="@+id/eventTimeFrom" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Required*"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/eventText"
+        app:layout_constraintStart_toStartOf="@+id/eventText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/eventTimeTo"
+        app:layout_constraintStart_toStartOf="@+id/eventTimeTo" />
+
+    <Spinner
+        android:id="@+id/event_color_spinner"
+        android:layout_width="205dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventTimeTo" />
+        app:layout_constraintTop_toBottomOf="@+id/eventTimeFrom" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Color:"
+        app:layout_constraintBottom_toTopOf="@+id/event_color_spinner"
+        app:layout_constraintStart_toStartOf="@+id/event_color_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

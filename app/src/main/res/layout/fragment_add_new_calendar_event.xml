@@ -123,8 +123,14 @@
 
         <Button
             android:id="@+id/nextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="263dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/signin_button"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:text="Next" />
 
     </LinearLayout>
