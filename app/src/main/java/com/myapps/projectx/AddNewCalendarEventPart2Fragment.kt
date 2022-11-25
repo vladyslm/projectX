@@ -127,8 +127,7 @@ class AddNewCalendarEventPart2Fragment : Fragment() {
         binding.eventColorSpinner.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                val selected = parent?.getItemAtPosition(pos)
-                println(selected)
+                eventColor = parent?.getItemAtPosition(pos) as String
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
