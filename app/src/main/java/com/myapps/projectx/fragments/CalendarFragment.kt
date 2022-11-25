@@ -76,7 +76,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         binding!!.calendarPreviousMonth.setOnClickListener { previousMonthAction(view) }
         binding!!.calendarNextMonth.setOnClickListener { nextMonthAction(view) }
 
-        updateScrollPosition(selectedDate.dayOfMonth)
+
     }
 
     private fun initWidgets() {
@@ -122,6 +122,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         calendarEventViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
             calendarEventAdapter.setEvents(events)
         })
+        updateScrollPosition(selectedDate.dayOfMonth - 1)
     }
 
     private fun daysInMonthArray(date: LocalDate): ArrayList<String> {
@@ -151,7 +152,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         calendarEventRecyclerView.doOnPreDraw {
             (calendarEventRecyclerView.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
                 dayNumber,
-                (it.height * 0.3).toInt()
+                (it.height * 0.03).toInt()
             )
         }
     }
