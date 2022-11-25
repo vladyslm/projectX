@@ -22,6 +22,12 @@ import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import com.myapps.projectx.databinding.FragmentCalendarBinding
+import com.myapps.projectx.libs.DateConverter
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
+const val PATTERN = "dd/MM/yyyy"
 
 class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     private var TAG = "CalendarFragment"
@@ -36,6 +42,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     private lateinit var calendarEventRecyclerView: RecyclerView
 
     private var days: ArrayList<String> = ArrayList()
+    private var daysAndWeekDays: ArrayList<Pair<String, String>> = ArrayList()
 
     private val calendarEventViewModel: CalendarEventViewModel by activityViewModels()
 
@@ -83,13 +90,19 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         monthYearText.text = monthYearFromDate(selectedDate)
         val daysInMonth = daysInMonthArray(selectedDate)
 
-
         val yearMonth = YearMonth.from(selectedDate)
         val numOfDaysInMonth = yearMonth.lengthOfMonth()
 
         days = ArrayList()
+        daysAndWeekDays = ArrayList()
         for (i in 1..numOfDaysInMonth) {
             days.add(i.toString())
+            val dateStr = "${i}/${selectedDate.month.value}/${selectedDate.year}"
+
+            val timestamp = DateConverter.DateStringToTimestamp(dateStr, PATTERN, Locale.ENGLISH)
+            val date = DateConverter.timestampToLocalDate(timestamp!!)
+
+            daysAndWeekDays.add(Pair(i.toString(), date.dayOfWeek.name.slice(0..2)))
         }
 
         val calendarAdapter = CalendarAdapter(daysInMonth, selectedDate.dayOfMonth.toString(), this)
@@ -100,9 +113,8 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
         val calendarEventAdapter = CalendarEventAdapter(
             calendarEventViewModel,
-            days,
-            selectedDate.dayOfMonth.toString(),
-            selectedDate
+            selectedDate,
+            daysAndWeekDays
         )
         calendarEventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         calendarEventRecyclerView.adapter = calendarEventAdapter

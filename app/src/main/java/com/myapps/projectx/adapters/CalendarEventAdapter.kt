@@ -19,15 +19,16 @@ import java.time.YearMonth
 import java.util.Locale
 
 class CalendarEventAdapter(
-    private var calendarEventViewModel: CalendarEventViewModel,
-    private var daysOfMonth: ArrayList<String>,
-    private var currentDay: String,
-    chosenMonthYear: LocalDate
+    calendarEventViewModel: CalendarEventViewModel,
+    chosenMonthYear: LocalDate,
+    private var days: ArrayList<Pair<String, String>>
 
 ) : RecyclerView.Adapter<CalendarEventAdapter.ViewHolder>() {
 
     private val TAG = "CalendarEventAdapter"
     private val PATTERN = "dd/MM/yyyy"
+
+    private var currentDay: String = chosenMonthYear.dayOfMonth.toString()
 
     private var _mapEvents = mutableMapOf<Int, ArrayList<CalendarEvent>>()
 
@@ -51,8 +52,13 @@ class CalendarEventAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private fun prepareDayTextView(day: TextView, data: String) {
-            day.text = data
+        private fun prepareDayTextView(
+            day: TextView,
+            weekday: TextView,
+            data: Pair<String, String>
+        ) {
+            weekday.text = data.second
+            day.text = data.first
 
             if (currentDay == day.text) {
                 day.background = ContextCompat.getDrawable(context, R.drawable.calendar_active_cell)
@@ -61,12 +67,13 @@ class CalendarEventAdapter(
             }
         }
 
-        fun bind(data: String) {
+        fun bind(data: Pair<String, String>) {
             val day = itemView.findViewById<TextView>(R.id.calendarEventDate)
-            prepareDayTextView(day, data)
+            val weekday = itemView.findViewById<TextView>(R.id.calenderEventWeekday)
+            prepareDayTextView(day, weekday, data)
 
             val events =
-                if (_mapEvents[data.toInt()] != null) _mapEvents[data.toInt()] else ArrayList()
+                if (_mapEvents[data.first.toInt()] != null) _mapEvents[data.first.toInt()] else ArrayList()
 
             setChildRecyclerView(itemView, events!!.toList())
         }
@@ -106,11 +113,11 @@ class CalendarEventAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(daysOfMonth[position])
+        holder.bind(days[position])
     }
 
     override fun getItemCount(): Int {
-        return daysOfMonth.size
+        return days.size
     }
 
     fun setChildRecyclerView(itemView: View, events: List<CalendarEvent>) {
