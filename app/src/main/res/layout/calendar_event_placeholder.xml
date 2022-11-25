@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:background="@color/gun_powder"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
-
-    <LinearLayout
-        android:layout_width="54dp"
-        android:layout_height="74dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/calenderEventWeekday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:text="MON"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/calendarEventDate"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:background="@drawable/calendar_active_cell"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:text="1"
-            android:textAlignment="center" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendarChildRV"
+        <LinearLayout
+            android:layout_width="54dp"
+            android:layout_height="74dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/calenderEventWeekday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MON"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/calendarEventDate"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:background="@drawable/calendar_active_cell"
+                android:gravity="center"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/calendarChildRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>
